@@ -1,0 +1,23 @@
+USE [ClinicPro]
+GO
+
+INSERT INTO [dbo].[LabTests]
+           ([TestCode]
+           ,[Test]
+           ,[TestGroupID]
+           ,[HaveScreen]
+           ,[TestCost]
+           ,[LabScreenID])
+           
+    
+SELECT [TestCode]
+      ,[Test]
+      ,[TestGroupID]
+	  ,0
+	  ,0
+	  ,1
+	  
+  FROM [ClinicProBK].[dbo].[Lab Test Groups] where [TestGroupID] = 5
+GO
+
+

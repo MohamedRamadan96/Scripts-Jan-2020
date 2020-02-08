@@ -1,0 +1,4 @@
+select InvoiceID,InvoiceDate,PaymentReference,ResubmissionType,datediff(day,(select top 1 InvoiceRemitance.PaymentDate from InvoiceRemitance  where InvoiceRemitance.InvoiceID=Invoice.InvoiceID order by PaymentDate desc),GetDate()) as [Aging] from invoice 
+where clinicid = 3 and ResubmissionType = 'internal complaint' and Resubmit = 1 and InvoiceDate between '2019-01-01' and '2020-01-01'
+and datediff(day,(select top 1 InvoiceRemitance.PaymentDate from InvoiceRemitance  where InvoiceRemitance.InvoiceID=Invoice.InvoiceID order by PaymentDate desc),GetDate()) >=40
+and datediff(day,(select top 1 InvoiceRemitance.PaymentDate from InvoiceRemitance  where InvoiceRemitance.InvoiceID=Invoice.InvoiceID order by PaymentDate desc),GetDate())<=45
